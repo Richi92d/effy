@@ -1,0 +1,57 @@
+<app-card class="card-container">
+
+    <h1 title *ngIf="step == 1">Vous êtes ?</h1>
+    <h1 title *ngIf="step == 2">Combien de personnes composent votre foyer ?</h1>
+    <h1 title *ngIf="step == 3">À combien s'élève le revenu total de votre foyer fiscal ?</h1>
+    <h1 title *ngIf="step == 4">Quelle est la surface à isoler ?</h1>
+
+    <p subtitle *ngIf="step == 2"> Le montant de vos aides varie en fonction de la taille de votre ménage.
+    </p>
+
+    <p subtitle *ngIf="step == 3">Ce revenu est utilisé pour calculer le montant de vos aides
+        au plus juste.</p>
+
+    <div content>
+        <form [formGroup]="form">
+            <div *ngIf="step == 1">
+                <mat-radio-group formControlName="type">
+                    <mat-radio-button value="{{typeLogement.P}}">
+                        <img src="./assets/img/house.png" class="img-size" alt="proprietaire icon">
+                    </mat-radio-button>
+                    <mat-radio-button value="{{typeLogement.L}}">
+                        <img src="./assets/img/building.png" class="img-size" alt="location icon">
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+            <div *ngIf="step == 2">
+                <mat-form-field>
+                    <mat-label>Nombre de personnes</mat-label>
+                    <input matInput formControlName="nbrPers" type="number">
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="step == 3">
+                <mat-form-field>
+                    <mat-label>Révenu du foyer</mat-label>
+                    <input matInput formControlName="revenu" minlength="10000" maxlength="100000" type="number">
+                    <mat-hint>Entre 10k et 100k</mat-hint>
+                </mat-form-field>
+            </div>
+
+
+            <div *ngIf="step == 4">
+                <mat-form-field>
+                    <mat-label>Surface</mat-label>
+                    <input matInput formControlName="surface" type="number">
+                </mat-form-field>
+            </div>
+
+        </form>
+    </div>
+    <div button>
+        <button mat-button *ngIf="step != 1" (click)="previous()">Précédent</button>
+        <button mat-button *ngIf="step != 3" [disabled]="checkFormValidity()" (click)="next()">Suivant</button>
+        <app-button *ngIf="step == 3" [text]="'Valider'" (click)="GoToDetail()"></app-button>
+    </div>
+</app-card>

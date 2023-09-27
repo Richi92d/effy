@@ -1,0 +1,80 @@
+.dashboard {
+    display: flex;
+
+    .right-side {
+        width: 100%;
+        padding: 8px 30px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .right-body {
+        flex: 1;
+        display: flex;
+        overflow: hidden;
+    }
+
+    .card {
+        background-color: white;
+        border-radius: 4px;
+        margin-top: 8px;
+        padding: 15px;
+        transition: 0.3s;
+        height: fit-content;
+    }
+    .card:hover {
+        box-shadow: 5px 1px 20px 1px #ddd;
+        transform: scale(0.96);
+    }
+
+    .mail-names {
+        font-weight: bold;
+        font-size: 15px;
+        margin-left: 10px;
+    }
+
+    .mails {
+        display: flex;
+        align-items: center;
+    }
+
+    .mail-subtitle {
+        color: grey;
+        font-size: 10px;
+    }
+
+    .message {
+        margin: 20px 10px;
+        background-color: white;
+        padding: 25px;
+    }
+
+    .refuse {
+        color: red;
+    }
+
+    .accepted {
+        color: green;
+    }
+
+    .title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .message-from {
+        margin-top: 20px;
+        font-size: 17px;
+    }
+}
+
+/* On screens that are 600px or less */
+@media screen and (max-width: 600px) {
+    .right-body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+}

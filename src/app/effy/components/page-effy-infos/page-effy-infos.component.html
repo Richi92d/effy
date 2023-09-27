@@ -1,0 +1,65 @@
+<div class="dashboard" *ngFor="let item of userProject">
+    <div class="right-side">
+        <div class="right-body">
+            <div *ngIf="item.type != typeLogement.L">
+                <div class="card">
+                    <div class="mails">
+                        <div class="mail-names">
+                            Je suis: {{item.type}}
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="mails">
+                        <div class="mail-names">
+                            Surface: {{item.surface}}m²
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="mails">
+                        <div class="mail-names">
+                            Coût du projet: {{item.surface | projectCost}}
+                            <p class="mail-subtitle">surface * 80 euros</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="mails">
+                        <div class="mail-names">
+                            Nombre de personnes: {{item.nbrPers}}
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="mails">
+                        <div class="mail-names">
+                            Revenu fiscale: {{item.revenu | currency: 'EUR':'symbol':'1.0-0' }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card" *ngIf="helpAccepted">
+                    <div class="mails">
+                        <div class="mail-names" class="accepted">
+                            Montant de l'aide accordé: {{helpFromEffy | currency: 'EUR':'symbol':'1.0-0' }}
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="message">
+                <div class="title">
+                    Bonjour {{userName}}
+                </div>
+                <div class="message-from">
+                    <p *ngIf="item.type == typeLogement.L" class="refuse"> Vous n'êtes pas éligible à l'aide EFFY</p>
+                    <p *ngIf="helpAccepted" class="accepted">félicitations pour votre éligibilité à notre programme
+                        d'aides et d'accompagnement</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

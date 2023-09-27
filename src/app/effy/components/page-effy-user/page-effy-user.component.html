@@ -1,0 +1,64 @@
+<app-card class="card-container">
+
+    <h1 title *ngIf="step == 1">Vous êtes ?</h1>
+    <h1 title *ngIf="step == 2">Comment vous appelez-vous ?</h1>
+    <h1 title *ngIf="step == 3">Quel est votre numéro de téléphone ?</h1>
+    <h1 title *ngIf="step == 4">Dernière étape: votre Email</h1>
+
+    <p subtitle *ngIf="step == 3"> Vous serez rappelé gratuitement afin de vous accompagner.</p>
+
+    <p subtitle *ngIf="step == 4"> Nous vous enverrons tous les éléments de votre dossier.</p>
+
+    <div content>
+        <form [formGroup]="form">
+            <div *ngIf="step == 1">
+                <mat-radio-group formControlName="civilite">
+
+                    <mat-radio-button value="Monsieur">
+                        <img src="./assets/img/men.png" class="img-size" alt="women icon">
+                    </mat-radio-button>
+
+                    <mat-radio-button value="Madame">
+                        <img src="./assets/img/women.png" class="img-size" alt="men icon">
+                    </mat-radio-button>
+
+                </mat-radio-group>
+            </div>
+
+            <div *ngIf="step == 2">
+                <mat-form-field>
+                    <mat-label>Nom</mat-label>
+                    <input matInput formControlName="nom" type="text">
+                </mat-form-field>
+            </div>
+            <div *ngIf="step == 2">
+                <mat-form-field>
+                    <mat-label>Prénom</mat-label>
+                    <input matInput formControlName="prenom" type="text">
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="step == 3">
+                <mat-form-field>
+                    <mat-label>Téléphone</mat-label>
+                    <input matInput formControlName="tel" type="text" placeholder="06 00 00 00 00" maxlength="10">
+                    <mat-error>Veuillez saisir que des chiffres</mat-error>
+                </mat-form-field>
+            </div>
+
+
+            <div *ngIf="step == 4">
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" type="email">
+                </mat-form-field>
+            </div>
+
+        </form>
+    </div>
+    <div button>
+        <button mat-button *ngIf="step != 1" (click)="previous()">Précédent</button>
+        <button mat-button *ngIf="step != 4" [disabled]="checkFormValidity()" (click)="next()">Suivant</button>
+        <app-button *ngIf="step == 4" [text]="'Valider'" (click)="GoToProject()"></app-button>
+    </div>
+</app-card>

@@ -1,0 +1,24 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    width: 100%;
+
+    .nav {
+        color: #034387;
+        flex-wrap: nowrap;
+        margin-left: 3em;
+    }
+}
+
+/* On screens that are 600px or less */
+@media screen and (max-width: 600px) {
+    img {
+        position: relative;
+        bottom: 27px;
+    }
+    .nav {
+        text-align: center;
+        font-size: 15px;
+    }
+}
