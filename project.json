@@ -1,3 +1,11 @@
 {
-  "project": []
+  "project": [
+    {
+      "type": "Proprietaire",
+      "nbrPers": 2,
+      "revenu": 50000,
+      "surface": 50,
+      "id": 1
+    }
+  ]
 }

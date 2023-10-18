@@ -51,7 +51,7 @@
     </div>
     <div button>
         <button mat-button *ngIf="step != 1" (click)="previous()">Précédent</button>
-        <button mat-button *ngIf="step != 3" [disabled]="checkFormValidity()" (click)="next()">Suivant</button>
-        <app-button *ngIf="step == 3" [text]="'Valider'" (click)="GoToDetail()"></app-button>
+        <button mat-button *ngIf="step != 4" [disabled]="checkFormValidity()" (click)="next()">Suivant</button>
+        <app-button *ngIf="step == 4" [text]="'Valider'" (click)="GoToDetail()"></app-button>
     </div>
 </app-card>
